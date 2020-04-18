@@ -1,9 +1,9 @@
-module yaml_to_json
+module yam2json
 
-go 1.13
+go 1.14
 
 require (
-	github.com/go-yaml/yaml v2.1.0+incompatible
-	github.com/json-iterator/go v1.1.9
-	github.com/tidwall/gjson v1.6.0 // indirect
+	github.com/go-yaml/yaml v2.1.0+incompatible // indirect
+	github.com/json-iterator/go v1.1.9 // indirect
+	github.com/tidwall/pretty v1.0.1 // indirect
 )

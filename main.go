@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"github.com/go-yaml/yaml"
 	jsoniter "github.com/json-iterator/go"
+	"github.com/tidwall/pretty"
 	"io/ioutil"
 	"log"
 	"os"
@@ -33,13 +34,14 @@ func main() {
 	outputJosn := make(map[interface{}]interface{})
 	err = yaml.Unmarshal(inputYaml, &outputJosn)
 	if err != nil {
-		log.Fatalln("decode yaml content error")
+		log.Fatalln(err.Error())
 	}
 
 	var json = jsoniter.ConfigCompatibleWithStandardLibrary
-	jsonString, err := json.MarshalIndent(&outputJosn, "", "    ")
+	jsonString, err := json.MarshalIndent(&outputJosn, "", "")
 	if err != nil {
 		log.Fatalln("encode data to json error")
 	}
+	jsonString = pretty.Pretty(jsonString)
 	fmt.Println(string(jsonString))
 }
